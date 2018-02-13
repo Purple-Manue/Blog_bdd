@@ -38,6 +38,9 @@
  			</div>
  		</section>
  		<section class="container-fluid">
+ 			<div class="row">
+ 				<h1 class="col-12 text-center">AJOUT ARTICLE</h1>
+ 			</div>
  			<div>
  				<form method="POST" action="request.php" class="col-6 offset-3">
  					<div class="row">
@@ -68,13 +71,14 @@
 									$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 									$grep = $bdd->query('SELECT * FROM Categorie');
 	    							while ($gdata = $grep->fetch()){ ?>
-										<option class="text-center" value="<php echo $gdata['id'] ?>"><?php echo $gdata['nom']?></option>
+										<option class="text-center" value="<?php echo $gdata['id'] ?>"><?php echo $gdata['nom']?></option>
 								<?php } ?>
 							</select>
  						</span>
- 					</div>
- 					<div class="row">
- 						
+ 						<span class="form-group col-6 text-left">
+					    	<label>lien</label>
+					    	<input type="text" class="form-control" aria-describedby="emailHelp" name="lien" value="<?php print $_GET['lien']; ?>">
+						</span>
  					</div>
  					<div class="row">
  						<span class="form-group col-12 text-left">

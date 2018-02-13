@@ -17,6 +17,10 @@
 	$prenom = $_POST['prenom'];
 	$titre = $_POST['titre'];
 	$date = date("y-m-d");
+	$categorie = $_POST['categorie'];
+	$lien = "";
+	$image = "";
+	$texte = $_POST['texte'];
 
 	if ($cpt == sizeof($array) && $error > 0) {
 		
@@ -25,19 +29,19 @@
 					window.location.href = 'formulaire_ajout_article.php?var=$key&mail=$mail&nom=$nom&prenom=$prenom&titre=$titre';
 					</script>";
 			exit;
+
 	}else if ($cpt == sizeof($array) && $error == 0){
 
 		$bdd = mySqli();
-		$req = $bdd->prepare('INSERT INTO Auteur (nom, prenom, mail) VALUES(?,?,?)');
-		$req->execute(array($_POST['nom'], $_POST['prenom'], $_POST['mail']));
-		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$id_auteur = ajoutAuteur($bdd, $nom, $prenom, $mail);
+		ajoutArticle($bdd, $categorie, $id_auteur, $titre, $texte, $lien, $image);
 
 		echo	"<script type=\"text/javascript\">
 					window.alert('formulaire valide !');
 					window.location.href = 'formulaire_ajout_article.php';
 					</script>";
 			exit;
-	}
 
+	}
 
 ?>
