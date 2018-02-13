@@ -1,14 +1,22 @@
-<?php include 'myFunction.php' ?>
+<?php include 'myFunction.php';
+if (isset($_GET['nom'])) {
+  $nom =  $_GET['nom'];
+} else $nom = "";
+if (isset($_GET['prenom'])) {
+  $prenom =  $_GET['prenom'];
+} else $prenom = "";
+if (isset($_GET['mail'])) {
+  $mail =  $_GET['mail'];
+} else $mail = "";
+if (isset($_GET['titre'])) {
+  $titre =  $_GET['titre'];
+} else $titre = "";
+?>
 <html>
-    <head>
-	  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="librairies/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="librairies/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
-		<link rel="stylesheet" href="scss/style.css">
+  <head>
+			<?php include 'header.php'; ?>
  	</head>
+
  	<body>
  		<section class="container-fluid">
  			<div class="container">
@@ -19,7 +27,7 @@
 	 				<div class="col-12 text-center">BLOG D'ARTICLE</div>
 	 			</div>
  			</div>
- 			
+
  		</section>
  		<section class="container-fluid">
  			<div class="">
@@ -43,28 +51,28 @@
  					<div class="row">
  						<span class="form-group col-6 text-left">
 					    	<label>Nom</label>
-					    	<input type="text" class="form-control" aria-describedby="emailHelp" name="nom" value="<?php print $_GET['nom']; ?>">
+					    	<input type="text" class="form-control" aria-describedby="emailHelp" name="nom" value="<?php print $nom; ?>">
 						</span>
 						<span class="form-group col-6 text-left">
 					    	<label>Prénom</label>
-					    	<input type="text" class="form-control" aria-describedby="emailHelp" name="prenom" value="<?php print $_GET['prenom']; ?>">
+					    	<input type="text" class="form-control" aria-describedby="emailHelp" name="prenom" value="<?php print $prenom; ?>">
 						</span>
  					</div>
  					<div class="row">
  						<span class="form-group col-6 text-left">
 					    	<label>E-mail</label>
-					    	<input type="email" class="form-control" aria-describedby="emailHelp" name="mail" value="<?php print $_GET['mail']; ?>">
+					    	<input type="email" class="form-control" aria-describedby="emailHelp" name="mail" value="<?php print $mail; ?>">
 						</span>
 						<span class="form-group col-6 text-left">
 					    	<label>Titre</label>
-					    	<input type="text" class="form-control" aria-describedby="emailHelp" name="titre" value="<?php print $_GET['titre']; ?>">
+					    	<input type="text" class="form-control" aria-describedby="emailHelp" name="titre" value="<?php print $titre; ?>">
 						</span>
  					</div>
  					<div class="row">
  						<span class="form-group col-6">
  							<label>Catégorie</label>
  							<select  name="categorie" class="form-control">
-								<?php $bdd = mySqli(); 
+								<?php $bdd = mySqli();
 									$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 									$grep = $bdd->query('SELECT * FROM Categorie');
 	    							while ($gdata = $grep->fetch()){ ?>
@@ -74,7 +82,7 @@
  						</span>
  					</div>
  					<div class="row">
- 						
+
  					</div>
  					<div class="row">
  						<span class="form-group col-12 text-left">

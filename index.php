@@ -1,15 +1,11 @@
 <?php include 'myFunction.php' ?>
 
 <html>
-    <head>
-	  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="librairies/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="librairies/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
-		<link rel="stylesheet" href="scss/style.css">
+  <head>
+	   <?php include 'header.php'; ?>
+		 <title>Page Accueil</title>
  	</head>
+
  	<body>
  		<section class="container-fluid">
  			<div class="container">
@@ -20,7 +16,7 @@
 	 				<div class="col-12 text-center">BLOG D'ARTICLE</div>
 	 			</div>
  			</div>
- 			
+
  		</section>
  		<section class="container-fluid">
  			<div class="">
@@ -31,12 +27,15 @@
 					<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
 						<ul class="navbar-nav">
 							<li class="nav-item active">
+								<a class="nav-link" href="article.php">Article <span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item active">
 								<a class="nav-link" href="formulaire_ajout_article.php">New article <span class="sr-only">(current)</span></a>
 							</li>
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catégories</a>
 								<div class="dropdown-menu" aria-labelledby="dropdown08">
-									<?php $bdd = mySqli(); 
+									<?php $bdd = mySqli();
 										$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 										$grep = $bdd->query('SELECT * FROM Categorie');
     									while ($gdata = $grep->fetch()){ ?>
@@ -49,6 +48,6 @@
 				</nav>
  			</div>
  		</section>
- 		
+
  	</body>
 </html>
