@@ -73,7 +73,7 @@ if (isset($_GET['titre'])) {
  							<label>Catégorie</label>
  							<select  name="categorie" class="form-control">
 								<?php $bdd = mySqli();
-									$grep = categorie();
+									$grep = categorie($bdd);
 	    							while ($gdata = $grep->fetch()){ ?>
 										<option class="text-center" value="<?php echo $gdata['id'] ?>"><?php echo $gdata['nom']?></option>
 								<?php } ?>
