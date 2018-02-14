@@ -60,13 +60,88 @@
 
 	function lesArticles($bdd){
 		try{
-			$req = $bdd->prepare("SELECT *
-							FROM Auteur
-							INNER JOIN Article ON Auteur.id = Article.id_auteur
-							INNER JOIN Categorie ON Categorie.id = Article.id_categorie");
-			$donnees = $req->execute();
-			return $donnees;
-		}catch{
+			$req = $bdd->query("SELECT *
+								FROM Auteur 
+								INNER JOIN Article ON Auteur.id = Article.id_auteur 
+								INNER JOIN Categorie ON Categorie.id = Article.id_categorie
+								LIMIT 10");
+			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			return $req;
+		}catch (Exception $e) {
+			die("Oh noes! There's an error in the query categire! ($categorie)");
+		}
+	}
+
+	function touslesArticles($bdd){
+		try{
+			$req = $bdd->query("SELECT *
+								FROM Auteur 
+								INNER JOIN Article ON Auteur.id = Article.id_auteur 
+								INNER JOIN Categorie ON Categorie.id = Article.id_categorie");
+			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			return $req;
+		}catch (Exception $e) {
+			die("Oh noes! There's an error in the query categire! ($categorie)");
+		}
+	}
+
+	function media($bdd){
+		try{
+			$req = $bdd->query("SELECT Article.titre AS titre, Article.texte AS texte
+								FROM Auteur 
+								INNER JOIN Article ON Auteur.id = Article.id_auteur 
+								INNER JOIN Categorie ON Categorie.id = Article.id_categorie 
+								WHERE Categorie.nom = 'media';
+								LIMIT 10");
+			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			return $req;
+		}catch (Exception $e) {
+			die("Oh noes! There's an error in the query categire! ($categorie)");
+		}
+	}
+
+	function technologie($bdd){
+		try{
+			$req = $bdd->query("SELECT Article.titre AS titre, Article.texte AS texte
+								FROM Auteur 
+								INNER JOIN Article ON Auteur.id = Article.id_auteur 
+								INNER JOIN Categorie ON Categorie.id = Article.id_categorie 
+								WHERE Categorie.nom = 'technologie';
+								LIMIT 10");
+			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			return $req;
+		}catch (Exception $e) {
+			die("Oh noes! There's an error in the query categire! ($categorie)");
+		}
+	}
+
+	function sport($bdd){
+		try{
+			$req = $bdd->query("SELECT Article.titre AS titre, Article.texte AS texte
+								FROM Auteur 
+								INNER JOIN Article ON Auteur.id = Article.id_auteur 
+								INNER JOIN Categorie ON Categorie.id = Article.id_categorie 
+								WHERE Categorie.nom = 'sport';
+								LIMIT 10");
+			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			return $req;
+		}catch (Exception $e) {
+			die("Oh noes! There's an error in the query categire! ($categorie)");
+		}
+	}
+
+	function travail($bdd){
+		try{
+			$req = $bdd->query("SELECT Article.titre AS titre, Article.texte AS texte
+								FROM Auteur 
+								INNER JOIN Article ON Auteur.id = Article.id_auteur 
+								INNER JOIN Categorie ON Categorie.id = Article.id_categorie 
+								WHERE Categorie.nom = 'travail';
+								LIMIT 10");
+			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			return $req;
+		}catch (Exception $e) {
+
 			die("Oh noes! There's an error in the query categire! ($categorie)");
 		}
 	}
