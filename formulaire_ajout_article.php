@@ -13,8 +13,8 @@ if (isset($_GET['titre'])) {
 } else $titre = "";
 ?>
 <html>
-  <head>
-			<?php include 'header.php'; ?>
+	<head>
+		<?php include 'header.php'; ?>
  	</head>
 
  	<body>
@@ -73,16 +73,12 @@ if (isset($_GET['titre'])) {
  							<label>Catégorie</label>
  							<select  name="categorie" class="form-control">
 								<?php $bdd = mySqli();
-									$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-									$grep = $bdd->query('SELECT * FROM Categorie');
+									$grep = categorie();
 	    							while ($gdata = $grep->fetch()){ ?>
-										<option class="text-center" value="<php echo $gdata['id'] ?>"><?php echo $gdata['nom']?></option>
+										<option class="text-center" value="<?php echo $gdata['id'] ?>"><?php echo $gdata['nom']?></option>
 								<?php } ?>
 							</select>
  						</span>
- 					</div>
- 					<div class="row">
-
  					</div>
  					<div class="row">
  						<span class="form-group col-12 text-left">

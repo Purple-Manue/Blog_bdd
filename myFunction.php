@@ -3,7 +3,7 @@
 	function mySqli(){
 		try{
 
-    		$bdd = new PDO('mysql:host=localhost;dbname=BDD_BLOG;charset=utf8', 'purple', 'Alchimie12');
+    		$bdd = new PDO('mysql:host=localhost;dbname=BDD_BLOG;charset=utf8','root', '@Cqnttptrpf1987');
     		return $bdd;
 		}
 		catch(Exception $e){
@@ -60,7 +60,7 @@
 
 	function lesArticles($bdd){
 		try{
-			$req = $bdd->query("SELECT *
+			$req = $bdd->query("SELECT Auteur.id as id, Auteur.nom as nom_auteur, Article.id as id_article, prenom, mail, titre, lien, date, image, Categorie.nom as nom_categorie, id_categorie, texte
 								FROM Auteur 
 								INNER JOIN Article ON Auteur.id = Article.id_auteur 
 								INNER JOIN Categorie ON Categorie.id = Article.id_categorie
@@ -146,4 +146,16 @@
 		}
 	}
 
+	function article($bdd, $id){
+		try{
+			$req = $bdd->query("SELECT Auteur.id as id, Auteur.nom as nom_auteur, Article.id as id_article, prenom, mail, titre, lien, date, image, Categorie.nom as nom_categorie, id_categorie, texte
+								FROM Auteur 
+								INNER JOIN Article ON Auteur.id = Article.id_auteur 
+								INNER JOIN Categorie ON Categorie.id = Article.id_categorie
+								WHERE Article.id = '".$id."'");
+			return $req;
+		}catch (Exception $e) {
+			die("Oh noes! There's an error in the query categire! ($categorie)");
+		}
+	}
 ?>
