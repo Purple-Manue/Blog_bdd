@@ -31,12 +31,11 @@
 				<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
 					<ul class="navbar-nav">
 						<li class="nav-item active">
-							<a class="nav-link" href="formulaire_ajout_article.php">New article <span class="sr-only">(current)</span></a>
+							<a class="nav-link" href="index.php">Acceuil <span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catégories</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown08">
-								<a class="dropdown-item" value="article" href="tousLesArticles.php">tous les articles</a>
 								<?php $bdd = mySqli(); 
 									$gdata = categorie($bdd);
 									while ($grep = $gdata->fetch()){ ?>
@@ -52,7 +51,7 @@
  			<div class="container">
 				<div class="row">
 					<?php $bdd = mySqli();
-						$req = lesArticles($bdd);
+						$req = touslesArticles($bdd);
 						while ($donnees = $req->fetch()){ ?>
 							<div class="col-sm-12 col-md-6">
 								<h1>
@@ -60,10 +59,6 @@
 								</h1>
 								<p>
 									<?php echo $donnees['texte']; ?>
-								</p>
-								<p>
-									Auteur : <?php echo $donnees['nom']?> </br>
-									publié le :  <?php echo $donnees['date']?> </br>
 								</p>			
 							</div>
 											
