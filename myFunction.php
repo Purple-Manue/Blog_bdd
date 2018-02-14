@@ -3,7 +3,7 @@
 	function mySqli(){
 		try{
 
-    		$bdd = new PDO('mysql:host=localhost;dbname=BDD_BLOG;charset=utf8','purple', 'Alchimie12');
+    		$bdd = new PDO('mysql:host=localhost;dbname=BDD_BLOG;charset=utf8','root', '@Cqnttptrpf1987');
     		return $bdd;
 		}
 		catch(Exception $e){
@@ -54,7 +54,6 @@
 
 	function categorie($bdd){
 		$req = $bdd->query('SELECT * FROM Categorie');
-		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		return $req;
 	}
 
@@ -65,7 +64,6 @@
 								INNER JOIN Article ON Auteur.id = Article.id_auteur
 								INNER JOIN Categorie ON Categorie.id = Article.id_categorie
 								LIMIT 10");
-			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			return $req;
 		}catch (Exception $e) {
 			die("Oh noes! There's an error in the query categorie! ($categorie)");
@@ -91,8 +89,8 @@
 								FROM Auteur
 								INNER JOIN Article ON Auteur.id = Article.id_auteur
 								INNER JOIN Categorie ON Categorie.id = Article.id_categorie
-								WHERE Categorie.nom = '".$nom_categorie."';
-								LIMIT 10");
+								WHERE Categorie.nom = '".$nom_categorie."'
+								");
 			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			return $req;
 		}catch (Exception $e) {
