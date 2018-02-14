@@ -45,7 +45,7 @@
  			<div class="container">
 				<div class="row">
 					<?php $bdd = mySqli();
-						$req = lesArticles($bdd);
+						$req = touslesArticles($bdd);
 						while ($donnees = $req->fetch()){ ?>
 							<div class="col-sm-12 col-md-6">
 								<a href="article.php?id=<?php echo $donnees['id_article'] ?>">
