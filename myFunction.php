@@ -3,7 +3,7 @@
 	function mySqli(){
 		try{
 
-    		$bdd = new PDO('mysql:host=localhost;dbname=BDD_BLOG;charset=utf8','root', '@Cqnttptrpf1987');
+    		$bdd = new PDO('mysql:host=localhost;dbname=BDD_BLOG;charset=utf8','purple', 'Alchimie12');
     		return $bdd;
 		}
 		catch(Exception $e){
@@ -72,7 +72,7 @@
 
 	function touslesArticles($bdd){
 		try{
-			$req = $bdd->query("SELECT Auteur.nom AS nom_auteur, Article.titre AS titre, Article.texte AS texte, Article.date AS date, Categorie.nom AS nom_categorie
+			$req = $bdd->query("SELECT Auteur.nom AS nom_auteur, mail, Article.titre AS titre, Article.texte AS texte, Article.date AS date, Categorie.nom AS nom_categorie
 								FROM Auteur
 								INNER JOIN Article ON Auteur.id = Article.id_auteur
 								INNER JOIN Categorie ON Categorie.id = Article.id_categorie");
