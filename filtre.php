@@ -35,16 +35,18 @@
  		<section class="container-fluid">
  			<div class="container">
 				<?php
-					if (isset($_GET['id'])) { ?>
+					if (isset($_GET['nom'])) { ?>
 						<div class="row">
 							<?php 
 								$bdd = mySqli();
-								$req = article($bdd, $_GET['id']);
+								$req = filtre($bdd, $_GET['nom']);
 								while ($donnees = $req->fetch()){ ?>
-									<div class="col-sm-12 col-md-12">
-										<h2 class="text-center"> <?php echo $donnees['titre']; ?> </h2>
+									<div class="col-sm-12 col-md-6">
+										<a href="article.php?id=<?php echo $donnees['id_article'] ?>">
+											<h2 class="text-center"> <?php echo $donnees['titre']; ?> </h2>
+										</a>
 										<p>
-											<?php echo $donnees['texte']; ?>
+											<?php echo substr($donnees['texte'],0,100)."..."; ?>
 										</p>
 										<p>
 											Auteur : <?php echo $donnees['nom_auteur']?> </br>
@@ -60,7 +62,3 @@
 		</section>
 	</body>
 </html>
-			
-
-
-		

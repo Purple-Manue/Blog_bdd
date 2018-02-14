@@ -36,7 +36,7 @@
 								<?php $bdd = mySqli();
 									$gdata = categorie($bdd);
 									while ($grep = $gdata->fetch()){ ?>
-										<a class="dropdown-item" value="<php echo $gdata['id'] ?>" href=""><?php echo $grep['nom']?></a>
+										<a class="dropdown-item" href="filtre.php?nom=<?php echo $grep['nom'] ?>"><?php echo $grep['nom']?></a>
 								<?php } ?>
 							</div>
 						</li>
@@ -58,6 +58,7 @@
 									<?php echo substr($donnees['texte'],0,100)."..."; ?>
 								</p>
 								<p>
+									Nom Categorie : <?php echo $donnees['nom_categorie'] ?>
 									Auteur : <?php echo $donnees['nom_auteur']?> </br>
 									Mail : <?php echo $donnees['mail']?> </br>
 									Date et heure publication :  <?php echo $donnees['date']?> </br>
