@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 	function mySqli(){
 		try{
@@ -11,7 +11,9 @@
         	die('Erreur : '.$e->getMessage());
 		}
 
+  	die('Erreur : '.$e->getMessage());
 	}
+}
 
 	function id_auteur($bdd, $mail){
 		try {
@@ -45,7 +47,7 @@
 	}
 
 	function ajoutArticle($bdd, $id_categorie, $id_auteur, $titre, $texte, $lien, $image){
-		$req = $bdd->prepare('INSERT INTO Article (id_categorie, id_auteur, titre, texte, lien, image) 
+		$req = $bdd->prepare('INSERT INTO Article (id_categorie, id_auteur, titre, texte, lien, image)
 				VALUES (?,?,?,?,?,?)');
 		$req->execute(array($id_categorie, $id_auteur, $titre, $texte, $lien, $image));
 		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -54,7 +56,7 @@
 	function categorie($bdd){
 		$req = $bdd->query('SELECT * FROM Categorie');
 		$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		return $req;								
+		return $req;
 	}
 
 	function lesArticles($bdd){
@@ -140,6 +142,7 @@
 			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			return $req;
 		}catch (Exception $e) {
+
 			die("Oh noes! There's an error in the query categire! ($categorie)");
 		}
 	}
