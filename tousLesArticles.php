@@ -20,10 +20,10 @@
 	 				<div class="col-12 text-center">BLOG D'ARTICLE</div>
 	 			</div>
  			</div>
- 			
+
  		</section>
  		<section class="container-fluid">
- 			
+
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -36,7 +36,7 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catégories</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown08">
-								<?php $bdd = mySqli(); 
+								<?php $bdd = mySqli();
 									$gdata = categorie($bdd);
 									while ($grep = $gdata->fetch()){ ?>
 										<a class="dropdown-item" value="<php echo $gdata['id'] ?>" href=""><?php echo $grep['nom']?></a>
@@ -59,13 +59,22 @@
 								</h1>
 								<p>
 									<?php echo $donnees['texte']; ?>
-								</p>			
+								</p>
+								<p>
+									<?php echo $donnees['nom_auteur'] ?>
+								</p>
+								<p>
+									<?php echo $donnees['nom_categorie'] ?>
+								</p>
+								<p>
+									<?php echo $donnees['date'] ?>
+								</p>
 							</div>
-											
-					<?php } ?>
+
+						<?php } ?>
 				</div>
  			</div>
  		</section>
- 		
+
  	</body>
 </html>

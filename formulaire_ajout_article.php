@@ -76,7 +76,7 @@ if (isset($_GET['titre'])) {
 									$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 									$grep = $bdd->query('SELECT * FROM Categorie');
 	    							while ($gdata = $grep->fetch()){ ?>
-										<option class="text-center" value="<php echo $gdata['id'] ?>"><?php echo $gdata['nom']?></option>
+										<option class="text-center" value="<?php echo $gdata['id'] ?>"><?php echo $gdata['nom']?></option>
 								<?php } ?>
 							</select>
  						</span>
