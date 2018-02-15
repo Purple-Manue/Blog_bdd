@@ -30,18 +30,15 @@
 							</div>
 						</li>
 					</ul>
-				</div>
-				<div class="col-6 col-sm-12 col-md-12 col-lg-6">
-					<form class="barrerecherche" action="barrerecherche.php" method="get">
-						<input type="search" name="recherche" placeholder="Recherche..." />
-						<input type="submit" name="" value="Valider">
-					</form>
+					<form class="form-inline my-2 my-md-0 barrerecherche" action="barrerecherche.php" method="get">
+            			<input class="form-control" type="text" placeholder="Search" aria-label="Search" name="recherche">
+          			</form>
 				</div>
 			</nav>
  		</section>
  		<section class="container">
  			<div class="row">
- 				<nav aria-label="Page navigation example" class="col-4 offset-5">
+ 				<nav aria-label="Page navigation example" class="col-sm-6 offset-sm-3 col-lg-md offset-md-5">
 					<ul class="pagination">
 						<li class="page-item">
 							<a class="page-link" href="#" aria-label="Previous">
