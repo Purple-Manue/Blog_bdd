@@ -4,7 +4,7 @@
     <head>
 	  	<?php include 'header.php'; ?>
  	</head>
- 	<body>
+ 	<body id="demo">
  		<section class="container-fluid">
  			<div class="container">
  				<div class="row">
@@ -30,10 +30,11 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catégories</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown08">
+								<a class="dropdown-item" value="article" href="tousLesArticles.php">tous les articles</a>
 								<?php $bdd = mySqli();
 									$gdata = categorie($bdd);
 									while ($grep = $gdata->fetch()){ ?>
-										<a class="dropdown-item" value="<php echo $gdata['id'] ?>" href=""><?php echo $grep['nom']?></a>
+										<a class="dropdown-item" href="filtre.php?nom=<?php echo $grep['nom'] ?>"><?php echo $grep['nom']?></a>
 								<?php } ?>
 							</div>
 						</li>
@@ -47,7 +48,8 @@
 					<?php $bdd = mySqli();
 						$req = touslesArticles($bdd);
 						while ($donnees = $req->fetch()){ ?>
-							<div class="col-sm-12 col-md-6">
+							<div class="col-sm-12 col-md-6 bloc-article">
+								<h1 class="text-center"><?php echo $donnees['nom_categorie'] ?> </h1>
 								<a href="article.php?id=<?php echo $donnees['id_article'] ?>">
 									<h2> <?php echo $donnees['titre']; ?> </h2>
 								</a>
@@ -58,7 +60,6 @@
 									Auteur : <?php echo $donnees['nom_auteur']?> </br>
 									Mail : <?php echo $donnees['mail']?> </br>
 									Date et heure publication :  <?php echo $donnees['date']?> </br>
-									Nom Categorie : <?php echo $donnees['nom_categorie'] ?>
 								</p>
 							</div>
 
