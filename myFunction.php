@@ -57,13 +57,13 @@
 		return $req;
 	}
 
-	function lesArticles($bdd, $nb_article){
+	function lesArticles($bdd){
 		try{
 			$req = $bdd->query("SELECT Auteur.id as id, Auteur.nom as nom_auteur, Article.id as id_article, prenom, mail, titre, lien, date, image, Categorie.nom as nom_categorie, id_categorie, texte
 								FROM Auteur
 								INNER JOIN Article ON Auteur.id = Article.id_auteur
 								INNER JOIN Categorie ON Categorie.id = Article.id_categorie
-								LIMIT '".$nb_article."'");
+								LIMIT 10 ");
 			return $req;
 		}catch (Exception $e) {
 			die("Oh noes! There's an error in the query categorie! ($categorie)");
@@ -122,5 +122,15 @@
 		}catch (Exception $e){
 			die("Oups ! Erreur d'insertion dans la base des données");
 		}
+	}
+
+	function barrerecherche($bdd, $recherche) {
+				$recherche = htmlspecialchars($recherche);
+				$articles = $bdd->query("SELECT Auteur.nom AS nom_auteur, mail, Article.id AS id_article, Article.titre AS titre, Article.texte AS texte, Article.date AS date, Categorie.nom AS nom_categorie
+					FROM Auteur
+					INNER JOIN Article ON Auteur.id = Article.id_auteur
+					INNER JOIN Categorie ON Categorie.id = Article.id_categorie
+					WHERE titre LIKE '%$recherche%'");
+		return $articles;
 	}
 ?>
