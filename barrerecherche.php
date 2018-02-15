@@ -3,7 +3,7 @@
 <html>
   <head>
 	   <?php include 'header.php'; ?>
-		 <title>Page Accueil</title>
+		 <title>Résultat de recherche</title>
  	</head>
 
  	<body>
@@ -54,8 +54,9 @@
  		<section class="container-fluid">
  			<div class="container">
 				<div class="row">
-					<?php $bdd = mySqli();
-						$req = lesArticles($bdd);
+					<?php
+						
+						$req = barrerecherche($bdd,  $_GET['recherche']);
 						while ($donnees = $req->fetch()){ ?>
 							<div class="col-sm-12 col-md-6">
 								<a href="article.php?id=<?php echo $donnees['id_article'] ?>">

@@ -72,7 +72,7 @@
 
 	function touslesArticles($bdd){
 		try{
-			$req = $bdd->query("SELECT Auteur.nom AS nom_auteur, mail, Article.titre AS titre, Article.texte AS texte, Article.date AS date, Categorie.nom AS nom_categorie
+			$req = $bdd->query("SELECT Auteur.nom AS nom_auteur, mail, Article.id AS id_article, Article.titre AS titre, Article.texte AS texte, Article.date AS date, Categorie.nom AS nom_categorie
 								FROM Auteur
 								INNER JOIN Article ON Auteur.id = Article.id_auteur
 								INNER JOIN Categorie ON Categorie.id = Article.id_categorie");
@@ -85,7 +85,7 @@
 
 	function filtre($bdd, $nom_categorie){
 		try{
-			$req = $bdd->query("SELECT Auteur.nom AS nom_auteur, mail, Article.titre AS titre, Article.texte AS texte, Article.date AS date, Categorie.nom AS nom_categorie
+			$req = $bdd->query("SELECT Auteur.nom AS nom_auteur, mail, Article.id AS id_article, Article.titre AS titre, Article.texte AS texte, Article.date AS date, Categorie.nom AS nom_categorie
 								FROM Auteur
 								INNER JOIN Article ON Auteur.id = Article.id_auteur
 								INNER JOIN Categorie ON Categorie.id = Article.id_categorie
@@ -110,4 +110,15 @@
 			die("Oh noes! There's an error in the query categire! ($categorie)");
 		}
 	}
+
+	function barrerecherche($bdd, $recherche) {
+				$recherche = htmlspecialchars($recherche);
+				$articles = $bdd->query("SELECT Auteur.nom AS nom_auteur, mail, Article.id AS id_article, Article.titre AS titre, Article.texte AS texte, Article.date AS date, Categorie.nom AS nom_categorie
+					FROM Auteur
+					INNER JOIN Article ON Auteur.id = Article.id_auteur
+					INNER JOIN Categorie ON Categorie.id = Article.id_categorie
+					WHERE titre LIKE '%$recherche%'");
+		return $articles;
+	}
+
 ?>
