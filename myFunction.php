@@ -3,7 +3,7 @@
 	function mySqli(){
 		try{
 
-    		$bdd = new PDO('mysql:host=localhost;dbname=BDD_BLOG;charset=utf8','purple', 'Alchimie12');
+    		$bdd = new PDO('mysql:host=localhost;dbname=BDD_BLOG;charset=utf8','root', '@Cqnttptrpf1987');
     		return $bdd;
 		}
 		catch(Exception $e){
@@ -57,13 +57,13 @@
 		return $req;
 	}
 
-	function lesArticles($bdd){
+	function lesArticles($bdd, $nb_article){
 		try{
 			$req = $bdd->query("SELECT Auteur.id as id, Auteur.nom as nom_auteur, Article.id as id_article, prenom, mail, titre, lien, date, image, Categorie.nom as nom_categorie, id_categorie, texte
 								FROM Auteur
 								INNER JOIN Article ON Auteur.id = Article.id_auteur
 								INNER JOIN Categorie ON Categorie.id = Article.id_categorie
-								LIMIT 10");
+								LIMIT '".$nb_article."'");
 			return $req;
 		}catch (Exception $e) {
 			die("Oh noes! There's an error in the query categorie! ($categorie)");
@@ -72,7 +72,7 @@
 
 	function touslesArticles($bdd){
 		try{
-			$req = $bdd->query("SELECT Auteur.nom AS nom_auteur, mail, Article.titre AS titre, Article.texte AS texte, Article.date AS date, Categorie.nom AS nom_categorie
+			$req = $bdd->query("SELECT Auteur.id as id, Auteur.nom as nom_auteur, Article.id as id_article, prenom, mail, titre, lien, date, image, Categorie.nom as nom_categorie, id_categorie, texte
 								FROM Auteur
 								INNER JOIN Article ON Auteur.id = Article.id_auteur
 								INNER JOIN Categorie ON Categorie.id = Article.id_categorie");
@@ -108,6 +108,19 @@
 			return $req;
 		}catch (Exception $e) {
 			die("Oh noes! There's an error in the query categire! ($categorie)");
+		}
+	}
+
+	function nb_article($bdd){
+		try{
+			$reponse = $bdd->prepare("SELECT COUNT(*) AS total FROM Article");
+			$reponse->execute();
+			$row = $reponse->fetch();
+			$total = $row['total'];
+			return $total;
+
+		}catch (Exception $e){
+			die("Oups ! Erreur d'insertion dans la base des données");
 		}
 	}
 ?>
