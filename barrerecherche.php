@@ -8,6 +8,7 @@
 
  	<body>
  		<?php include 'navbar.php' ?>
+
  		<section class="container-fluid">
  			<div class="container">
 				<div class="row">

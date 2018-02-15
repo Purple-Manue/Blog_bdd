@@ -7,12 +7,12 @@
 
  	<body>
  		<?php include 'navbar.php' ?>
-
  		<section class="container-fluid">
  			<div class="container">
 				<div class="row">
 					<?php
 						$bdd = mySqli();
+
 						$req = lesArticles($bdd);
 						while ($donnees = $req->fetch()){ ?>
 							<div class="col-sm-12 col-md-6 bloc-article">
@@ -31,9 +31,10 @@
 							</div>
 					<?php } ?>
 						
+
 				</div>
  			</div>
  		</section>
- 		
+
  	</body>
 </html>
