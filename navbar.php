@@ -36,28 +36,5 @@
 				</div>
 			</nav>
  		</section>
- 		<section class="container">
- 			<div class="row">
- 				<nav aria-label="Page navigation example" class="col-sm-6 offset-sm-3 col-lg-md offset-md-5">
-					<ul class="pagination">
-						<li class="page-item">
-							<a class="page-link" href="index.php?page=<?php if ((intval($_GET['page'])-1) < 1) { echo '1'; } else echo intval($_GET['page'])-1 ; ?>" aria-label="Previous">
-								<span aria-hidden="true">&laquo;</span>
-								<span class="sr-only">Previous</span>
-							</a>
-						</li>
-						<li class="page-item"><a class="page-link" href="index.php?page=1">1</a></li>
-						<li class="page-item"><a class="page-link" href="index.php?page=2">2</a></li>
-						<li class="page-item"><a class="page-link" href="index.php?page=3">3</a></li>
-						<li class="page-item">
-							<a class="page-link" href="index.php?page=<?php if ((intval($_GET['page'])+1) > 3) { echo '3'; } else echo intval($_GET['page'])+1 ; ?> " aria-label="Next">
-								<span aria-hidden="true">&raquo;</span>
-								<span class="sr-only">Next</span>
-							</a>
-						</li>
-					</ul>
-				</nav>
- 			</div>
- 		</section>
-
- 		<!-- href="<?php //echo $_SERVER["HTTP_REFERER"]; ?>" -->
+ 		
+ 		  

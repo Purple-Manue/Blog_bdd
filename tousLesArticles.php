@@ -26,7 +26,7 @@
 									Date et heure publication :  <?php echo $donnees['date']?> </br>
 								</p>
 							</div>
-
+ 
 					<?php } ?>
 				</div>
  			</div>
@@ -34,3 +34,4 @@
 
  	</body>
 </html>
+
