@@ -24,6 +24,7 @@
 				</button>
 				<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
 					<ul class="navbar-nav">
+						<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" style="color:grey;"<i class="far fa-arrow-alt-circle-left fa-3x"></i></a>
 						<li class="nav-item active">
 							<a class="nav-link" href="index.php">Acceuil <span class="sr-only">(current)</span></a>
 						</li>

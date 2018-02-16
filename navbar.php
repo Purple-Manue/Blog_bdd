@@ -1,4 +1,3 @@
-
 <section class="container-fluid">
  			<div class="container">
  				<div class="row">
@@ -8,7 +7,7 @@
 	 				<div class="col-12 text-center">BLOG D'ARTICLE</div>
 	 			</div>
  			</div>
- 		</section>
+ 	</section>
  		<section class="container-fluid">
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
