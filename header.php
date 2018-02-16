@@ -1,7 +1,6 @@
 
 
 <!--  It is a good idea to bundle all CSS in one file. The same with JS -->
-
 <!--  JQUERY -->
 <script type="text/javascript" src="/path/to/jquery.min.js"></script>
 
