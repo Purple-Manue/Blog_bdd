@@ -58,13 +58,13 @@ include('login.php');
 		return $req;
 	}
 
-	function lesArticles($bdd){
+	function lesArticles($bdd, $debut, $fin){
 		try{
 			$req = $bdd->query("SELECT Auteur.id as id, Auteur.nom as nom_auteur, Article.id as id_article, prenom, mail, titre, lien, date, image, Categorie.nom as nom_categorie, id_categorie, texte
 								FROM Auteur
 								INNER JOIN Article ON Auteur.id = Article.id_auteur
 								INNER JOIN Categorie ON Categorie.id = Article.id_categorie
-								LIMIT 10 ");
+								LIMIT $debut, $fin ");
 			return $req;
 		}catch (Exception $e) {
 			die("Oh noes! There's an error in the query categorie! ($categorie)");

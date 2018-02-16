@@ -25,7 +25,7 @@
 				<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
 					<ul class="navbar-nav">
 						<li class="nav-item active">
-							<a class="nav-link" href="index.php">Acceuil <span class="sr-only">(current)</span></a>
+							<a class="nav-link" href="index.php?page=1">Acceuil <span class="sr-only">(current)</span></a>
 						</li>
 					</ul>
 				</div>
@@ -36,6 +36,9 @@
  			<div class="container">
 				<?php
 					if (isset($_GET['nom'])) { ?>
+						<div class="row">
+							<h1 class=" col-12 text-center"><?php echo $_GET['nom']; ?></h1>
+						</div>
 						<div class="row">
 							<?php 
 								$bdd = mySqli();
