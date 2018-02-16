@@ -84,14 +84,14 @@ include('login.php');
 		}
 	}
 
-	function filtre($bdd, $nom_categorie){
+	function filtre($bdd, $nom_categorie, $depart, $fin){
 		try{
 			$req = $bdd->query("SELECT Auteur.nom AS nom_auteur, mail, Article.id AS id_article, Article.titre AS titre, Article.texte AS texte, Article.date AS date, Categorie.nom AS nom_categorie
 								FROM Auteur
 								INNER JOIN Article ON Auteur.id = Article.id_auteur
 								INNER JOIN Categorie ON Categorie.id = Article.id_categorie
-								WHERE Categorie.nom = '".$nom_categorie."'
-								");
+								WHERE Categorie.nom = '$nom_categorie' 
+								LIMIT $depart, $fin ");
 			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			return $req;
 		}catch (Exception $e) {
@@ -136,4 +136,18 @@ include('login.php');
 		}
 	}
 
+	function nb_article_categorie($bdd, $nomCategorie){
+		try{
+			$req = $bdd->query("SELECT *
+								FROM Auteur
+								INNER JOIN Article ON Auteur.id = Article.id_auteur
+								INNER JOIN Categorie ON Categorie.id = Article.id_categorie
+								WHERE Categorie.nom = '".$nomCategorie."'");
+			$nbCategorie = $req->rowCount();
+			return $nbCategorie;
+
+		}catch (Exception $e){
+			die("Oups ! requête échoué ");
+		}
+	}
 ?>

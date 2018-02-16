@@ -25,6 +25,11 @@
 				<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
 					<ul class="navbar-nav">
 						<li class="nav-item active">
+							<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" style="color:grey;">
+								<i class="far fa-arrow-alt-circle-left fa-3x"></i>
+							</a>
+						</li>
+						<li class="nav-item active">
 							<a class="nav-link" href="index.php?page=1">Acceuil <span class="sr-only">(current)</span></a>
 						</li>
 					</ul>
@@ -35,14 +40,31 @@
  		<section class="container-fluid">
  			<div class="container">
 				<?php
-					if (isset($_GET['nom'])) { ?>
+					$bdd = mySqli();
+					$articleParPage = 10;
+
+					if (isset($_GET['nom']) and !empty($_GET['nom'])) { ?>
+
 						<div class="row">
 							<h1 class=" col-12 text-center"><?php echo $_GET['nom']; ?></h1>
 						</div>
 						<div class="row">
-							<?php
-								$bdd = mySqli();
-								$req = filtre($bdd, $_GET['nom']);
+
+							<?php	
+								$nb_article = nb_article_categorie($bdd, $_GET['nom']);
+								$pageTotales = ceil($nb_article/$articleParPage);
+
+								if (isset($_GET['page']) and !empty($_GET['page']) and $_GET['page'] > 0) {
+								
+									$_GET['page'] = intval($_GET['page']);
+									$pageCourante = $_GET['page'];
+
+								}else {
+									$pageCourante = 1;
+								}
+								$depart = ($pageCourante-1)*$articleParPage;
+								$req = filtre($bdd, $_GET['nom'], $depart, $articleParPage);
+
 								while ($donnees = $req->fetch()){ ?>
 									<div class="col-sm-12 col-md-6">
 										<a href="article.php?id=<?php echo $donnees['id_article'] ?>">
@@ -58,10 +80,34 @@
 											Nom Categorie : <?php echo $donnees['nom_categorie'] ?>
 										</p>
 									</div>
-								<?php } ?>
+							<?php } ?>
 						</div>
 				<?php } ?>
 			</div>
 		</section>
+		<section class="container">
+ 			<div class="row">
+ 				<nav aria-label="Page navigation example" class="col-sm-6 offset-sm-3 col-lg-md offset-md-5">
+					<ul class="pagination">
+						<li class="page-item">
+							<a class="page-link" href="filtre.php?page=<?php if ((intval($_GET['page'])-1) < 1) { echo '1'; } else echo intval($_GET['page'])-1 ; ?>&nom=<?php echo $_GET['nom']?>" aria-label="Previous">
+								<span aria-hidden="true">&laquo;</span>
+								<span class="sr-only">Previous</span>
+							</a>
+						</li>
+						<?php 
+							for ($i=1; $i <= $pageTotales ; $i++) { ?>
+								<li class="page-item"><a class="page-link" href="filtre.php?page=<?php echo $i ?>&nom=<?php echo $_GET['nom']?>"> <?php echo $i ?></a></li>
+						<?php } ?>
+						<li>
+							<a class="page-link" href="filtre.php?page=<?php if ((intval($_GET['page'])+1) > $pageTotales) { echo $pageTotales; } else echo intval($_GET['page'])+1 ; ?>&nom=<?php echo $_GET['nom']?> " aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+								<span class="sr-only">Next</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+ 			</div>
+ 		</section>
 	</body>
 </html>

@@ -39,15 +39,4 @@
 			exit;
 
 	}
-
-	function article($bdd, $id) {
-		$unarticle = mysqli_query($bdd,
-			"SELECT Auteur.nom as anom, titre, texte, date, lien,	Categorie.nom as cnom
-			FROM Article
-			LEFT JOIN Auteur ON Auteur.id = Article.id_auteur
-			LEFT JOIN Categorie ON Categorie.id = Article.id_categorie
-			WHERE Article.id='$id'");
-
-		return($unarticle);
-	}
 ?>

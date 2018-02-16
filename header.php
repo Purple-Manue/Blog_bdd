@@ -28,3 +28,6 @@
 
 
 <link rel="stylesheet" href="scss/style.css">
+
+<!-- ck editor -->
+<script src="//cdn.ckeditor.com/4.8.0/full/ckeditor.js"></script>

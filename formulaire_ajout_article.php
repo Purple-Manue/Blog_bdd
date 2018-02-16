@@ -47,29 +47,29 @@ if (isset($_GET['titre'])) {
  		</section>
  		<section class="container-fluid">
  			<div>
- 				<form method="POST" action="request.php" class="col-6 offset-3">
+ 				<form method="POST" action="request.php" class="col-6 offset-3" enctype="multipart/form-data">
  					<div class="row">
- 						<span class="form-group col-6 text-left">
+ 						<span class="form-group col-sm-12 col-md-6 text-left">
 					    	<label>Nom</label>
 					    	<input type="text" class="form-control" aria-describedby="emailHelp" name="nom" value="<?php print $nom; ?>">
 						</span>
-						<span class="form-group col-6 text-left">
+						<span class="form-group col-sm-12 col-md-6 text-left">
 					    	<label>Prénom</label>
 					    	<input type="text" class="form-control" aria-describedby="emailHelp" name="prenom" value="<?php print $prenom; ?>">
 						</span>
  					</div>
  					<div class="row">
- 						<span class="form-group col-6 text-left">
+ 						<span class="form-group col-sm-12 col-md-6 text-left">
 					    	<label>E-mail</label>
 					    	<input type="email" class="form-control" aria-describedby="emailHelp" name="mail" value="<?php print $mail; ?>">
 						</span>
-						<span class="form-group col-6 text-left">
+						<span class="form-group col-sm-12 col-md-6 text-left">
 					    	<label>Titre</label>
 					    	<input type="text" class="form-control" aria-describedby="emailHelp" name="titre" value="<?php print $titre; ?>">
 						</span>
  					</div>
  					<div class="row">
- 						<span class="form-group col-6">
+ 						<span class="form-group col-sm-12 col-md-6">
  							<label>Catégorie</label>
  							<select  name="categorie" class="form-control">
 								<?php $bdd = mySqli();
@@ -79,11 +79,16 @@ if (isset($_GET['titre'])) {
 								<?php } ?>
 							</select>
  						</span>
+ 						<div class="form-group col-sm-12 col-md-6">
+						    <label for="exampleInputFile">File input</label>
+						    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name="file">
+						    <small id="fileHelp" class="form-text text-muted">chargez une photo</small>
+						</div>
  					</div>
  					<div class="row">
  						<span class="form-group col-12 text-left">
 					    	<label>Texte </label>
-					    	<textarea class="form-control" rows="25" name="texte"></textarea>
+					    	<textarea class="form-control ckeditor" rows="25" name="texte"></textarea>
 						</span>
  					</div>
  					<div class="row">
