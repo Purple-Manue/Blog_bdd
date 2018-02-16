@@ -1,3 +1,6 @@
-
+.bloc-article {
+  border: 2px solid white;
+  height: 200px;
+  overflow: hidden; }
 
 /*# sourceMappingURL=style.css.map */
