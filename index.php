@@ -25,6 +25,7 @@
 						$depart = ($pageCourante-1)*$articleParPage;
 
 						$req = lesArticles($bdd, $depart, $articleParPage);
+
 							while ($donnees = $req->fetch()) { ?>
 								<div class="col-sm-12 col-md-6 bloc-article">
 									<h1 class="text-center"><?php echo $donnees['nom_categorie']; ?> </h1>

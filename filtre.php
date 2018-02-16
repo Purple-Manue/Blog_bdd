@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<?php include 'header.php'; ?>
-		<title>Page Accueil</title>
+		<title>Résultat tous les articles page d'accueil</title>
  	</head>
 
  	<body>
@@ -40,7 +40,7 @@
 							<h1 class=" col-12 text-center"><?php echo $_GET['nom']; ?></h1>
 						</div>
 						<div class="row">
-							<?php 
+							<?php
 								$bdd = mySqli();
 								$req = filtre($bdd, $_GET['nom']);
 								while ($donnees = $req->fetch()){ ?>

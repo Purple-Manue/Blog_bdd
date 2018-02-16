@@ -13,7 +13,6 @@
  			<div class="container">
 				<div class="row">
 					<?php
-						
 						$req = barrerecherche($bdd,  $_GET['recherche']);
 						while ($donnees = $req->fetch()){ ?>
 							<div class="col-sm-12 col-md-6">
@@ -30,7 +29,6 @@
 									Date et heure publication :  <?php echo $donnees['date']?> </br>
 								</p>
 							</div>
-
 					<?php } ?>
 				</div>
  			</div>
