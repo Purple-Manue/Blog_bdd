@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<?php include 'header.php'; ?>
-		<title>Page Accueil</title>
+		<title>Resultat un article</title>
  	</head>
 
  	<body>
@@ -37,7 +37,7 @@
 				<?php
 					if (isset($_GET['id'])) { ?>
 						<div class="row">
-							<?php 
+							<?php
 								$bdd = mySqli();
 								$req = article($bdd, $_GET['id']);
 								while ($donnees = $req->fetch()){ ?>
@@ -60,7 +60,3 @@
 		</section>
 	</body>
 </html>
-			
-
-
-		

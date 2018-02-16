@@ -27,7 +27,7 @@
 									$debut = 20;
 									$fin = 10;
 									break;
-								
+
 							}
 							$req = lesArticles($bdd, $debut, $fin);
 							while ($donnees = $req->fetch()) { ?>
